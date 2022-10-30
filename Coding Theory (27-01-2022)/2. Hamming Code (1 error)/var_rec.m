@@ -1,0 +1,20 @@
+function var_receive = var_rec(check_node_sent, pos)
+    
+    n = length(check_node_sent); 
+    var_receive = pos;
+  % var_receive = ones(1, 2^n - 1);
+    
+    
+    for cell_counter = 1:n
+        
+        my_cell = check_node_sent{cell_counter};
+        cols_my_cell = size(my_cell,2);
+        
+        for j = 1:cols_my_cell
+            
+            var_receive(my_cell(2, j)) = var_receive(my_cell(2, j)) + ...
+                                         my_cell(1, j);
+            
+        end
+    end 
+end
